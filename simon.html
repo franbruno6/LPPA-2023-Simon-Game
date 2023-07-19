@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Game</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="simon.css">
+</head>
+<body>
+    <header>
+        <h1>Simon Game</h1>
+    </header>
+    <main>
+        <div class="simon">
+            <button id="greenBtn" class="simonBtn"></button>
+            <button id="redBtn" class="simonBtn"></button>
+            <button id="yellowBtn" class="simonBtn"></button>
+            <button id="blueBtn" class="simonBtn"></button>
+        </div>
+        <div class="controls">
+            <button id="playBtn" class="control">Nueva Partida</button>
+            <button id="resetBtn" class="control">Reiniciar Partida</button>
+        </div>
+        <div>
+            Score: <span id="score"></span>
+        </div>
+    </main>
+    <script src="simon.js"></script>
+    <script src="event-handler.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

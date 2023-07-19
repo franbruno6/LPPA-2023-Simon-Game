@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    margin: 5vh 0;
+    text-align: center;
+    color: #ffdf80;
+    font-size: 30px;
+}
+
+button {
+    margin: 20px;
+    padding: 15px;
+    background-color: #000000;
+    font-size: 15px;
+    color: #ffdf80;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.simon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #767676;
+    width: 25vw;
+    border-radius: 3vw;
+}
+
+.simonBtn {
+    display: block;
+    width: 10vw;
+    height: 10vw;
+    margin: 1vw;
+    border-radius: 2vw;
+    border: 2px solid #000000;  
+}
+
+#greenBtn {
+    background-color: #33cc33;
+}
+#redBtn {
+    background-color: #ff0000;
+}
+#yellowBtn {
+    background-color: #ffff00;
+}
+#blueBtn {
+    background-color: #0066ff;
+}
+
+#greenBtn.highlight {
+    background-color: #adebad;
+}
+#redBtn.highlight {
+    background-color: #ff9999;
+}
+#yellowBtn.highlight {
+    background-color: #ffff99;
+}
+#blueBtn.highlight {
+    background-color: #99c2ff;
+}
+
+
+.botones button{
+    margin: 0 15px;
+    border: none;
+    background-color: inherit;
+    padding: 15px;
+    font-size: 17px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 15px;
+}
+
+.controls button:hover{
+    background-color: #ffdf80;
+    color: #000000;
+}
