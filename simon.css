@@ -72,7 +72,7 @@ button {
 }
 
 
-.botones button{
+.botones button {
     margin: 0 15px;
     border: none;
     background-color: inherit;
@@ -83,7 +83,17 @@ button {
     border-radius: 15px;
 }
 
-.controls button:hover{
+.controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.controls button:hover {
     background-color: #ffdf80;
     color: #000000;
+}
+
+.score p{
+    color: #ffdf80;
+    text-align: center;
 }

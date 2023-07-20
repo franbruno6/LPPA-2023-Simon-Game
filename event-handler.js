@@ -65,7 +65,6 @@ var handleResetBtn = function() {
 var handleGreenBtn = function() {
     greenBtn.classList.toggle('highlight');
 }
-
 var handleRedBtn = function() {
     redBtn.classList.toggle('highlight');
 }
