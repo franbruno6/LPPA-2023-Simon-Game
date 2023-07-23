@@ -4,8 +4,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #000000;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #ffffff;
 }
 
 h1 {
@@ -96,4 +95,43 @@ button {
 .score p{
     color: #ffdf80;
     text-align: center;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: none;
+}
+
+.modal_container {
+    margin: auto;
+    width: 40vw;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 30px;
+    display: block;
+    text-align: center;
+}
+
+.modal_title {
+    font-size: 30px;
+    padding-bottom: 15px;
+}
+
+.modal_paragraph {
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+.modal_close {
+    font-size: 20px;
+    text-decoration: inherit;
+}
+
+.show {
+    display: flex;
 }

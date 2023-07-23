@@ -3,27 +3,6 @@
 var sequence = [];
 var colors = ['green', 'red', 'yellow', 'blue'];
 
-var highlightColor = function(color,i){
-    switch(color) {
-        case 'green':
-            greenBtn.classList.toggle('highlight');
-            setTimeout(function(){ greenBtn.classList.toggle('highlight');}, 1000)
-            break;
-        case 'red':
-            redBtn.classList.toggle('highlight');
-            setTimeout(function(){ redBtn.classList.toggle('highlight');}, 1000)
-            break;
-        case 'yellow':
-            yellowBtn.classList.toggle('highlight');
-            setTimeout(function(){ yellowBtn.classList.toggle('highlight');}, 1000)
-            break;
-        case 'blue':
-            blueBtn.classList.toggle('highlight');
-            setTimeout(function(){ blueBtn.classList.toggle('highlight');}, 1000)
-            break;
-    }
-}
-
 var showSequence = function() {
     sequence.forEach(function(color,i){
         setTimeout(function(){
@@ -52,6 +31,7 @@ var showSequence = function() {
 var handlePlayBtn = function() {
     var colorPos = Math.floor(Math.random() * 4);
     var newColor = colors[colorPos];
+    modal.classList.toggle('show');
     sequence.push(newColor);
     showSequence();
     console.log(sequence);
@@ -73,4 +53,7 @@ var handleBlueBtn = function() {
 }
 var handleYellowBtn = function() {
     yellowBtn.classList.toggle('highlight');
+}
+var handleCerrarBtn = function() {
+    modal.classList.toggle('show');
 }
