@@ -6,6 +6,8 @@ var gameOn = false;
 var sequencePlayer = [];
 var playerName = '';
 var level = 0;
+var indexValidate = 0;
+var score = 0;
 
 var handlePlayBtn = function() {
     modalNewGame.classList.toggle('show_modal');
@@ -40,7 +42,7 @@ var handleAcceptPlayerName = function() {
     playerName = playerNameInput.value;
     playerNameInput.value = '';
     modalNewGame.classList.toggle('show_modal');
-    console.log(playerName);
+    console.log('Player Name ' + playerName);
     newGame();
 }
 
@@ -49,10 +51,10 @@ var newGame = function() {
     var newColor = colors[colorPos];
     sequence.push(newColor);
     setTimeout(showSequence, 2000);
-    //console.log(sequence);
 }
 
 var showSequence = function() {
+    newLevel();
     sequence.forEach(function(color,i){
         setTimeout(function(){
             switch(color) {
@@ -75,9 +77,7 @@ var showSequence = function() {
             }
         }, i*2000)
     })
-    newLevel();
-    console.log(sequence);
-    console.log(level);
+    console.log('Secuencia Simon ' + sequence);
     playerTurn();
 }
 
@@ -93,34 +93,52 @@ var playerTurn = function() {
         redBtn.disabled = true;
         yellowBtn.disabled = true;
         blueBtn.disabled = true;
+        score = score + (1*10);
+        newGame();
     }
-}
-
-var clickOnGreenBtn = function() {
-    sequencePlayer.push('green');
-    console.log(sequencePlayer);
-    playerTurn();
-}
-
-var clickOnRedBtn = function() {
-    sequencePlayer.push('red');
-    console.log(sequencePlayer);
-    playerTurn();
-}
-
-var clickOnBlueBtn = function() {
-    sequencePlayer.push('blue');
-    console.log(sequencePlayer);
-    playerTurn();
-}
-
-var clickOnYellowBtn = function() {
-    sequencePlayer.push('yellow');
-    console.log(sequencePlayer);
-    playerTurn();
 }
 
 var newLevel = function() {
     level++;
     levelContent.innerHTML = 'Level ' + level;
+    indexValidate = 0;
+    sequencePlayer = [];
+}
+
+var clickOnGreenBtn = function() {
+    sequencePlayer.push('green');
+    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
+    validateColor();
+}
+
+var clickOnRedBtn = function() {
+    sequencePlayer.push('red');
+    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
+    validateColor();
+}
+
+var clickOnBlueBtn = function() {
+    sequencePlayer.push('blue');
+    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
+    validateColor();
+}
+
+var clickOnYellowBtn = function() {
+    sequencePlayer.push('yellow');
+    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
+    validateColor();
+}
+
+var validateColor = function() {
+    if(sequence[indexValidate] == sequencePlayer[indexValidate]){
+        console.log('---------------------------------------------');
+        console.log('Indice con el que se valido ' + indexValidate);
+        indexValidate++;
+        console.log('Proximo indice ' + indexValidate);
+        score = score + 10;
+        playerTurn();
+    }
+    else{
+        console.log('incorrecto');
+    }
 }
