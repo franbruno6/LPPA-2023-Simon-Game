@@ -19,22 +19,27 @@
             <button id="blueBtn" class="simonBtn"></button>
         </div>
         <div class="controls">
-            <button id="playBtn" class="control">Nueva Partida</button>
-            <button id="resetBtn" class="control">Reiniciar Partida</button>
+            <button id="playBtn" class="control">New Game</button>
+            <button id="resetBtn" class="control">Restart Game</button>
         </div>
         <div class="score">
             <p>Score: </p><span id="score"></span>
         </div>
     </main>
-    <section class="modal">
+    <section id="modal-new-game" class="modal">
         <div class="modal_container">
-            <h2 class="modal_title">Bienvenido al sitio</h2>
-            <p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor similique, ullam aliquid est alias minus vitae corrupti a quam maxime, libero impedit sint magnam labore!</p>
-            <button class="modal_close">Cerrar</button>
+            <h2 class="modal_title">Enter your name!</h2>
+            <form action="" id="form-new-game">
+                <input type="text" name="player-name" id="player-name">
+                <p id="error-player-name" class="modal_error">You must enter at least 3 letters to play</p>
+            </form>
+            <button id="player-name-accept" class="modal_button">Accept</button>
+            <button id="player-name-cancel" class="modal_button">Cancel</button>
         </div>
     </section>
-    <script src="./simon.js"></script>
-    <script src="./event-handler.js"></script>
-    <script src="./main.js"></script>
+    <script src="./js/simon.js"></script>
+    <script src="./js/event-handler.js"></script>
+    <script src="./js/validations.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 </html>
