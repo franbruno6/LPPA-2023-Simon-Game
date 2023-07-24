@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-    margin: 5vh 0;
+    margin: 20px 0;
     text-align: center;
     color: #ffdf80;
     font-size: 30px;
@@ -30,6 +30,16 @@ button {
     cursor: pointer;
 }
 
+/*Level*/
+
+.level {
+    color: #ffdf80;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: inline;
+}
+
 .simon {
     display: flex;
     flex-wrap: wrap;
@@ -41,6 +51,7 @@ button {
     min-width: 350px;
     min-height: 350px;
     border-radius: 3vw;
+    margin-top: 15px;
 }
 
 .simonBtn {
@@ -80,6 +91,7 @@ button {
     background-color: #99c2ff;
 }
 
+/*Buttons new game and restart game*/
 
 .botones button {
     margin: 0 15px;
@@ -102,12 +114,15 @@ button {
     color: #000000;
 }
 
+/*Score*/
+
 .score p{
     color: #ffdf80;
     text-align: center;
+    font-size: 20px;
 }
 
-/*MODALS*/
+/*Modals*/
 
 .modal {
     position: fixed;
