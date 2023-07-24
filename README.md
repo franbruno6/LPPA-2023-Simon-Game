@@ -1,10 +1,8 @@
 # Simon Game
 
-Repositorio creado para la materia Lenguajes de Programación Para la Administración.
+Repositorio creado para el examen final de la materia Lenguajes de Programación Para la Administración.
 
-Es una materia de 4to Año de la carrera Ingenierías en Sistemas de Información de la  Universidad Abierta Interamericana.
-
-Los profesores de la materia son David Curras y Darío Marañes.
+Asignatura a cargo de David Curras y Darío Marañes, es una materia de 4to Año de la carrera Ingeniería en Sistemas de Información de la Universidad Abierta Interamericana, sede Rosario.
 
 ## Autor
 
