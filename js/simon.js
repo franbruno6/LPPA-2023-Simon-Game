@@ -19,6 +19,9 @@ var playerNameCancel;
 //Level
 var levelContent;
 
+//Score
+var scoreContent;
+
 var init = function () {
     //Controls
     playBtn = document.getElementById('playBtn');
@@ -38,6 +41,9 @@ var init = function () {
 
     //Level
     levelContent = document.querySelector('#level');
+
+    //Score
+    scoreContent = document.querySelector('#score');
 
     //Initialize buttons disable
     playerNameAccept.disabled = true;

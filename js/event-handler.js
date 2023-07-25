@@ -60,40 +60,45 @@ var showSequence = function() {
             switch(color) {
                 case 'green':
                     greenBtn.classList.toggle('highlight');
-                    setTimeout(function(){ greenBtn.classList.toggle('highlight');}, 1000)
+                    setTimeout(function(){ 
+                        greenBtn.classList.toggle('highlight');
+                    }, 1000);
                     break;
                 case 'red':
                     redBtn.classList.toggle('highlight');
-                    setTimeout(function(){ redBtn.classList.toggle('highlight');}, 1000)
+                    setTimeout(function(){ 
+                        redBtn.classList.toggle('highlight');
+                    }, 1000);
                     break;
                 case 'yellow':
                     yellowBtn.classList.toggle('highlight');
-                    setTimeout(function(){ yellowBtn.classList.toggle('highlight');}, 1000)
+                    setTimeout(function(){ 
+                        yellowBtn.classList.toggle('highlight');
+                    }, 1000);
                     break;
                 case 'blue':
                     blueBtn.classList.toggle('highlight');
-                    setTimeout(function(){ blueBtn.classList.toggle('highlight');}, 1000)
+                    setTimeout(function(){ 
+                        blueBtn.classList.toggle('highlight');
+                    }, 1000);
                     break;
             }
         }, i*2000)
     })
     console.log('Secuencia Simon ' + sequence);
-    playerTurn();
+    setTimeout(playerTurn,sequence.length*2000); //Wait for the sequence to finish lighting up to enable the buttons
 }
 
 var playerTurn = function() {
     if(sequence.length > sequencePlayer.length){
-        greenBtn.disabled = false;
-        redBtn.disabled = false;
-        yellowBtn.disabled = false;
-        blueBtn.disabled = false;
+        playerPlay();
     }
     else{
-        greenBtn.disabled = true;
-        redBtn.disabled = true;
-        yellowBtn.disabled = true;
-        blueBtn.disabled = true;
-        score = score + (1*10);
+        simonPlay();
+        setTimeout(function(){
+            score = score + (level*10);
+            scoreContent.innerHTML = 'Score ' + score;
+        },400)
         newGame();
     }
 }
@@ -107,38 +112,46 @@ var newLevel = function() {
 
 var clickOnGreenBtn = function() {
     sequencePlayer.push('green');
-    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
     validateColor();
 }
 
 var clickOnRedBtn = function() {
     sequencePlayer.push('red');
-    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
     validateColor();
 }
 
 var clickOnBlueBtn = function() {
     sequencePlayer.push('blue');
-    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
     validateColor();
 }
 
 var clickOnYellowBtn = function() {
     sequencePlayer.push('yellow');
-    console.log('Sequence Player ' + sequencePlayer + ' ' + indexValidate);
     validateColor();
 }
 
 var validateColor = function() {
     if(sequence[indexValidate] == sequencePlayer[indexValidate]){
-        console.log('---------------------------------------------');
-        console.log('Indice con el que se valido ' + indexValidate);
         indexValidate++;
-        console.log('Proximo indice ' + indexValidate);
         score = score + 10;
+        scoreContent.innerHTML = 'Score ' + score;
         playerTurn();
     }
     else{
         console.log('incorrecto');
     }
+}
+
+var simonPlay = function() {
+    greenBtn.disabled = true;
+    redBtn.disabled = true;
+    yellowBtn.disabled = true;
+    blueBtn.disabled = true;
+}
+
+var playerPlay = function() {
+    greenBtn.disabled = false;
+    redBtn.disabled = false;
+    yellowBtn.disabled = false;
+    blueBtn.disabled = false;
 }
