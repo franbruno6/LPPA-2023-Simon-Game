@@ -13,7 +13,7 @@
     </header>
     <main>
         <div class="level">
-            <p id="level"></p>
+            <p id="level">Level</p>
         </div>
         <div class="simon">
             <button id="greenBtn" class="simonBtn"></button>
@@ -38,6 +38,14 @@
             </form>
             <button id="player-name-accept" class="modal_button">Accept</button>
             <button id="player-name-cancel" class="modal_button">Cancel</button>
+        </div>
+    </section>
+    <section id="modal-game-over" class="modal">
+        <div class="modal_container">
+            <h2 class="modal_title">Game Over</h2>
+            <p id="game-over-content" class="modal_paragraph"></p>
+            <button id="game-over-restart" class="modal_button">Restart Game</button>
+            <button id="game-over-change-name" class="modal_button">Change Name</button>
         </div>
     </section>
     <script src="./js/simon.js"></script>

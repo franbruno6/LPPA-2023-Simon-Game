@@ -2,12 +2,12 @@
 
 var sequence = [];
 var colors = ['green', 'red', 'yellow', 'blue'];
-var gameOn = false;
 var sequencePlayer = [];
 var playerName = '';
 var level = 0;
 var indexValidate = 0;
 var score = 0;
+var finalScore = 0;
 
 var handlePlayBtn = function() {
     modalNewGame.classList.toggle('show_modal');
@@ -15,22 +15,6 @@ var handlePlayBtn = function() {
 
 var handleResetBtn = function() {
     sequence = [];
-}
-
-var handleGreenBtn = function() {
-    greenBtn.classList.toggle('highlight');
-}
-
-var handleRedBtn = function() {
-    redBtn.classList.toggle('highlight');
-}
-
-var handleBlueBtn = function() {
-    blueBtn.classList.toggle('highlight');
-}
-
-var handleYellowBtn = function() {
-    yellowBtn.classList.toggle('highlight');
 }
 
 var handleCloseModal = function() {
@@ -86,7 +70,7 @@ var showSequence = function() {
         }, i*2000)
     })
     console.log('Secuencia Simon ' + sequence);
-    setTimeout(playerTurn,sequence.length*2000); //Wait for the sequence to finish lighting up to enable the buttons
+    setTimeout(playerTurn,sequence.length*1750); //Wait for the sequence to finish lighting up to enable the buttons
 }
 
 var playerTurn = function() {
@@ -98,7 +82,7 @@ var playerTurn = function() {
         setTimeout(function(){
             score = score + (level*10);
             scoreContent.innerHTML = 'Score ' + score;
-        },400)
+        },300)
         newGame();
     }
 }
@@ -111,21 +95,37 @@ var newLevel = function() {
 }
 
 var clickOnGreenBtn = function() {
+    greenBtn.classList.add('highlight');
+    setTimeout(function(){
+        greenBtn.classList.remove('highlight')
+    },100);
     sequencePlayer.push('green');
     validateColor();
 }
 
 var clickOnRedBtn = function() {
+    redBtn.classList.add('highlight');
+    setTimeout(function(){
+        redBtn.classList.remove('highlight')
+    },100);
     sequencePlayer.push('red');
     validateColor();
 }
 
 var clickOnBlueBtn = function() {
+    blueBtn.classList.add('highlight');
+    setTimeout(function(){
+        blueBtn.classList.remove('highlight')
+    },100);
     sequencePlayer.push('blue');
     validateColor();
 }
 
 var clickOnYellowBtn = function() {
+    yellowBtn.classList.add('highlight');
+    setTimeout(function(){
+        yellowBtn.classList.remove('highlight')
+    },100);
     sequencePlayer.push('yellow');
     validateColor();
 }
@@ -138,7 +138,7 @@ var validateColor = function() {
         playerTurn();
     }
     else{
-        console.log('incorrecto');
+        gameOver();
     }
 }
 
@@ -154,4 +154,38 @@ var playerPlay = function() {
     redBtn.disabled = false;
     yellowBtn.disabled = false;
     blueBtn.disabled = false;
+}
+
+var gameOver = function() {
+    simonPlay();
+    finalScore = score;
+    gameOverContent.innerHTML = 'Hi ' + playerName + ', your final score is ' + finalScore;
+    restartStats();
+    modalGameOver.classList.toggle('show_modal');
+}
+
+var restartGame = function() {
+    modalGameOver.classList.toggle('show_modal');
+    newGame();
+}
+
+var changeName = function() {
+    modalGameOver.classList.toggle('show_modal');
+    handlePlayBtn();
+}
+
+var restartStats = function() {
+    //Reset sequence, level and score
+    sequence = [];
+    sequencePlayer = [];
+    level = 0;
+    score = 0;
+    //Eliminates the highlight class from the buttons in case anyone stils higlighted
+    greenBtn.classList.remove('highlight');
+    redBtn.classList.remove('highlight');
+    blueBtn.classList.remove('highlight');
+    yellowBtn.classList.remove('highlight');
+    //Restarts the html to its original text
+    levelContent.innerHTML = 'Level';
+    scoreContent.innerHTML = 'Score';
 }

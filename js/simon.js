@@ -16,6 +16,12 @@ var playerNameInput;
 var playerNameAccept;
 var playerNameCancel;
 
+//Modal Game Over
+var modalGameOver;
+var gameOverRestart;
+var gameOverChangeName;
+var gameOverContent;
+
 //Level
 var levelContent;
 
@@ -39,6 +45,12 @@ var init = function () {
     playerNameAccept = document.querySelector('#player-name-accept');
     playerNameCancel = document.querySelector('#player-name-cancel');
 
+    //Modal game over
+    modalGameOver = document.querySelector('#modal-game-over');
+    gameOverRestart = document.querySelector('#game-over-restart');
+    gameOverContent = document.querySelector('#game-over-content');
+    gameOverChangeName = document.querySelector('#game-over-change-name');
+
     //Level
     levelContent = document.querySelector('#level');
 
@@ -59,16 +71,6 @@ var init = function () {
     resetBtn.addEventListener('click', handleResetBtn);
 
     //Simon buttons
-    greenBtn.addEventListener('mousedown', handleGreenBtn);
-    redBtn.addEventListener('mousedown', handleRedBtn);
-    yellowBtn.addEventListener('mousedown', handleYellowBtn);
-    blueBtn.addEventListener('mousedown', handleBlueBtn);
-    
-    greenBtn.addEventListener('mouseup', handleGreenBtn);
-    redBtn.addEventListener('mouseup', handleRedBtn);
-    yellowBtn.addEventListener('mouseup', handleYellowBtn);
-    blueBtn.addEventListener('mouseup', handleBlueBtn);
-
     greenBtn.addEventListener('click', clickOnGreenBtn);
     redBtn.addEventListener('click', clickOnRedBtn);
     yellowBtn.addEventListener('click', clickOnYellowBtn);
@@ -78,4 +80,8 @@ var init = function () {
     playerNameCancel.addEventListener('click', handleCloseModal);
     playerNameInput.addEventListener('keyup', validateFormPlayerName);
     playerNameAccept.addEventListener('click', handleAcceptPlayerName);
+
+    //Modal game over
+    gameOverRestart.addEventListener('click', restartGame);
+    gameOverChangeName.addEventListener('click', changeName);
 }
