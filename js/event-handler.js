@@ -31,6 +31,7 @@ var handleAcceptPlayerName = function() {
 }
 
 var newGame = function() {
+    playBtn.disabled = true;
     var colorPos = Math.floor(Math.random() * 4);
     var newColor = colors[colorPos];
     sequence.push(newColor);

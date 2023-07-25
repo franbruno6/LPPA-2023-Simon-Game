@@ -1,5 +1,5 @@
 //Permite letras y números como mínimo 3, máximo 20
-var regexPlayerName = /^[a-zA-Z0-9]{3,20}$/;
+var regexPlayerName = /^[\w\s]{3,20}$/;
 
 var validateFormPlayerName = function (event) {
     var errorPlayerName = document.querySelector('#error-player-name');

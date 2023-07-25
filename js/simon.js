@@ -2,7 +2,7 @@
 
 //Controls
 var playBtn;
-var resetBtn;
+var scoreboardBtn;
 
 //Simon buttons
 var greenBtn;
@@ -31,7 +31,7 @@ var scoreContent;
 var init = function () {
     //Controls
     playBtn = document.getElementById('playBtn');
-    resetBtn = document.getElementById('resetBtn');
+    scoreboardBtn = document.getElementById('scoreboardBtn');
 
     //Simon buttons
     greenBtn = document.getElementById('greenBtn');
@@ -68,7 +68,7 @@ var init = function () {
 
     //Controls
     playBtn.addEventListener('click', handlePlayBtn);
-    resetBtn.addEventListener('click', handleResetBtn);
+    scoreboardBtn.addEventListener('click', handleResetBtn);
 
     //Simon buttons
     greenBtn.addEventListener('click', clickOnGreenBtn);

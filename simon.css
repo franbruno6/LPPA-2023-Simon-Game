@@ -10,6 +10,7 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #000000;
+    color: #ffdf80;
 }
 
 h1 {
@@ -30,6 +31,11 @@ button {
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+    color: #ffdf80;
+}
+
 /*Level*/
 
 .level {
@@ -39,6 +45,8 @@ button {
     margin-bottom: 20px;
     display: block;
 }
+
+/*Simon*/
 
 .simon {
     display: flex;
@@ -91,18 +99,7 @@ button {
     background-color: #99c2ff;
 }
 
-/*Buttons new game and restart game*/
-
-.botones button {
-    margin: 0 15px;
-    border: none;
-    background-color: inherit;
-    padding: 15px;
-    font-size: 17px;
-    cursor: pointer;
-    color: #ffffff;
-    border-radius: 15px;
-}
+/*Buttons new game and scoreboard*/
 
 .controls {
     display: flex;
@@ -124,6 +121,32 @@ button {
     display: block;
 }
 
+/*Footer*/
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 20px;
+    padding: 0 0 13px 13px;
+}
+
+#developer {
+    display: inline;
+    left: 0;
+}
+
+#developer-github {
+    display: flex;
+    gap: 20px;
+}
+
+#contact {
+    text-align: end;
+}
 
 /*Modals*/
 
