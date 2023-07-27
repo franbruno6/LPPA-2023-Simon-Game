@@ -10,7 +10,7 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #000000;
-    color: #ffdf80;
+    color: #000000;
 }
 
 h1 {
@@ -132,6 +132,7 @@ footer {
     width: 100%;
     font-size: 20px;
     padding: 0 0 13px 13px;
+    color: #ffdf80;
 }
 
 #developer {
@@ -173,6 +174,7 @@ footer {
 .modal_title {
     font-size: 30px;
     padding-bottom: 15px;
+    color: #000000;
 }
 
 .modal_paragraph {
