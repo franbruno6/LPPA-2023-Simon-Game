@@ -23,8 +23,11 @@ var handlePlayBtn = function() {
 
 var handleCloseModal = function() {
     modalNewGame.classList.remove('show_modal');
+    modalGameOver.classList.remove('show_modal');
     modalScoreboard.classList.remove('show_modal');
     playerNameInput.value = '';
+    playBtn.disabled = false;
+    scoreboardBtn.disabled = false;
 }
 
 var handleAcceptPlayerName = function() {
@@ -36,6 +39,7 @@ var handleAcceptPlayerName = function() {
 
 var newGame = function() {
     playBtn.disabled = true;
+    scoreboardBtn.disabled = true;
     var colorPos = Math.floor(Math.random() * 4);
     var newColor = colors[colorPos];
     sequence.push(newColor);

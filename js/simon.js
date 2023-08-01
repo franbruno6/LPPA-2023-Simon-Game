@@ -21,6 +21,7 @@ var modalGameOver;
 var gameOverRestart;
 var gameOverChangeName;
 var gameOverContent;
+var gameOverClose;
 
 //Level
 var levelContent;
@@ -30,7 +31,6 @@ var scoreContent;
 var scoreboardScore;
 var scoreboardDate;
 var scoreboardClose;
-
 
 //Chronometer
 var centsContent;
@@ -63,6 +63,7 @@ var init = function () {
     gameOverRestart = document.querySelector('#game-over-restart');
     gameOverContent = document.querySelector('#game-over-content');
     gameOverChangeName = document.querySelector('#game-over-change-name');
+    gameOverClose = document.querySelector('#game-over-close');
 
     //Level
     levelContent = document.querySelector('#level');
@@ -109,6 +110,7 @@ var init = function () {
     //Modal game over
     gameOverRestart.addEventListener('click', restartGame);
     gameOverChangeName.addEventListener('click', changeName);
+    gameOverClose.addEventListener('click', handleCloseModal);
 
     //Modal scoreboard
     scoreboardDate.addEventListener('click', orderByDate);
