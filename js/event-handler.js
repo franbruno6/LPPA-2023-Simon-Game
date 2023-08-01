@@ -13,6 +13,8 @@ var seconds = 0;
 var minutes = 0;
 var controlChronometer = null;
 var penalty = 0;
+var players = [];
+var playersJSON;
 
 var handlePlayBtn = function() {
     modalNewGame.classList.toggle('show_modal');
@@ -31,7 +33,6 @@ var handleAcceptPlayerName = function() {
     playerName = playerNameInput.value;
     playerNameInput.value = '';
     modalNewGame.classList.toggle('show_modal');
-    console.log('Player Name ' + playerName);
     newGame();
 }
 
@@ -40,6 +41,7 @@ var newGame = function() {
     var colorPos = Math.floor(Math.random() * 4);
     var newColor = colors[colorPos];
     sequence.push(newColor);
+    getPlayers();
     setTimeout(showSequence, 2000);
 }
 
@@ -75,7 +77,6 @@ var showSequence = function() {
             }
         }, i*2000)
     })
-    console.log('Secuencia Simon ' + sequence);
     setTimeout(playerTurn,sequence.length*1750); //Wait for the sequence to finish lighting up to enable the buttons
 }
 
@@ -174,6 +175,10 @@ var gameOver = function() {
     simonPlay();
     calculatePenalty();
     finalScore = score - penalty;
+    if (finalScore < 0){
+        finalScore = 0;
+    }
+    savePlayer(playerName,finalScore,level);
     gameOverContent.innerHTML = 'Hi ' + playerName + ', your final score is ' + finalScore;
     restartStats();
     modalGameOver.classList.toggle('show_modal');
@@ -187,6 +192,72 @@ var restartGame = function() {
 var changeName = function() {
     modalGameOver.classList.toggle('show_modal');
     handlePlayBtn();
+}
+
+var setChronometer = function() {
+    if (cents < 99) {
+		cents++;
+		if (cents < 10) { cents = "0" + cents }
+		centsContent.innerHTML = ": " + cents;
+	}
+	if (cents == 99) {
+		cents = -1;
+	}
+	if (cents == 0) {
+		seconds ++;
+		if (seconds < 10) { seconds = "0" + seconds }
+		secondsContent.innerHTML = ": " + seconds;
+	}
+	if (seconds == 59) {
+        seconds = -1;
+	}
+	if ( (cents == 0) && (seconds == 0) ) {
+		minutes++;
+		if (minutes < 10) { minutes = "0" + minutes }
+		minutesContent.innerHTML = minutes;
+	}
+}
+
+var calculatePenalty = function() {
+    var secondsPenalty = seconds * 1;
+    var minutesPenalty = minutes * 60;
+    penalty = secondsPenalty + minutesPenalty;
+}
+
+var savePlayer = function(playerName, finalScore, level) {
+    var currentDate = new Date();
+    var hours = currentDate.getHours();
+    var minutes = currentDate.getMinutes();
+    var day = currentDate.toLocaleDateString();
+
+    if (hours < 10){
+        hours = '0'+hours;
+    }
+    if (minutes < 10){
+        minutes = '0'+minutes;
+    }
+
+    var newPlayer = {
+        name: playerName,
+        score: finalScore,
+        level : level,
+        date: day,
+        hour : hours + ':' + minutes
+    };
+
+    players.push(newPlayer);
+    
+    playersJSON = JSON.stringify(players);
+    localStorage.setItem('playersData', playersJSON);
+}
+
+var getPlayers = function() {
+    playersJSON = localStorage.getItem('playersData');
+    players = JSON.parse(playersJSON);
+    players.sort(function(a, b) {
+        return b.score - a.score
+    });
+    console.log(players);
 }
 
 var restartStats = function() {
@@ -210,34 +281,4 @@ var restartStats = function() {
     cents = 0;
     seconds = 0;
     minutes = 0;
-}
-
-var setChronometer = function() {
-    if (cents < 99) {
-		cents++;
-		if (cents < 10) { cents = "0" + cents }
-		centsContent.innerHTML = ": " + cents;
-	}
-	if (cents == 99) {
-		cents = -1;
-	}
-	if (cents == 0) {
-		seconds ++;
-		if (seconds < 10) { seconds = "0" + seconds }
-		secondsContent.innerHTML = ": " + seconds;
-	}
-	if (seconds == 59) {
-		seconds = -1;
-	}
-	if ( (cents == 0) && (seconds == 0) ) {
-		minutes++;
-		if (minutes < 10) { minutes = "0" + minutes }
-		minutesContent.innerHTML = minutes;
-	}
-}
-
-var calculatePenalty = function() {
-    var secondsPenalty = seconds * 1;
-    var minutesPenalty = minutes * 60;
-    penalty = secondsPenalty + minutesPenalty;
 }
