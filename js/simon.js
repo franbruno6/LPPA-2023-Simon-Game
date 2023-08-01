@@ -28,6 +28,11 @@ var levelContent;
 //Score
 var scoreContent;
 
+//Chronometer
+var centsContent;
+var secondsContent;
+var minutesContent;
+
 var init = function () {
     //Controls
     playBtn = document.getElementById('playBtn');
@@ -56,6 +61,11 @@ var init = function () {
 
     //Score
     scoreContent = document.querySelector('#score');
+
+    //Timer
+    centsContent = document.querySelector('#cents');
+    secondsContent = document.querySelector('#seconds');
+    minutesContent = document.querySelector('#minutes');
 
     //Initialize buttons disable
     playerNameAccept.disabled = true;

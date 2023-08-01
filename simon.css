@@ -43,7 +43,12 @@ a {
     text-align: center;
     font-size: 20px;
     margin-bottom: 20px;
-    display: block;
+    display: flex;
+    justify-content: space-around;
+}
+
+.timer {
+    display: inline;
 }
 
 /*Simon*/
@@ -133,6 +138,7 @@ footer {
     font-size: 20px;
     padding: 0 0 13px 13px;
     color: #ffdf80;
+    flex-wrap: wrap;
 }
 
 #developer {

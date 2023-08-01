@@ -60,11 +60,6 @@ button {
     pointer-events: none;
 }
 
-button:hover {
-    color: #ffdf80;
-    background-color: #000000d0;
-}
-
 .error {
     font-size: 15px;
     color: #ff0000;
@@ -82,8 +77,4 @@ textarea {
 
 .disabled_link {
     pointer-events: none;
-}
-
-a:hover {
-    background-color: blue;
 }

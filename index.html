@@ -14,6 +14,12 @@
     <main>
         <div class="level">
             <p id="level">Level</p>
+            <div id="timer">
+                <p id="timer" class="timer">Timer</p>
+                <p id="minutes" class="timer"> 00</p>
+                <p id="seconds" class="timer">: 00</p>
+                <p id="cents" class="timer">: 00</p>
+            </div>
         </div>
         <div class="simon">
             <button id="greenBtn" class="simonBtn"></button>
@@ -32,7 +38,7 @@
     <section id="modal-new-game" class="modal">
         <div class="modal_container">
             <h2 class="modal_title">Enter your name!</h2>
-            <form action="" id="form-new-game">
+            <form action="player-name" id="form-new-game">
                 <input type="text" name="player-name" id="player-name">
                 <p id="error-player-name" class="modal_error">You must enter at least 3 letters to play</p>
             </form>

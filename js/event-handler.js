@@ -8,6 +8,11 @@ var level = 0;
 var indexValidate = 0;
 var score = 0;
 var finalScore = 0;
+var cents = 0;
+var seconds = 0;
+var minutes = 0;
+var controlChronometer = null;
+var penalty = 0;
 
 var handlePlayBtn = function() {
     modalNewGame.classList.toggle('show_modal');
@@ -93,6 +98,9 @@ var newLevel = function() {
     levelContent.innerHTML = 'Level ' + level;
     indexValidate = 0;
     sequencePlayer = [];
+    if (level > 1){
+        clearInterval(controlChronometer);
+    }
 }
 
 var clickOnGreenBtn = function() {
@@ -148,6 +156,8 @@ var simonPlay = function() {
     redBtn.disabled = true;
     yellowBtn.disabled = true;
     blueBtn.disabled = true;
+    clearInterval(controlChronometer);
+    controlChronometer = null;
 }
 
 var playerPlay = function() {
@@ -155,11 +165,15 @@ var playerPlay = function() {
     redBtn.disabled = false;
     yellowBtn.disabled = false;
     blueBtn.disabled = false;
+    if (controlChronometer == null){
+        controlChronometer = setInterval(setChronometer,10);
+    }
 }
 
 var gameOver = function() {
     simonPlay();
-    finalScore = score;
+    calculatePenalty();
+    finalScore = score - penalty;
     gameOverContent.innerHTML = 'Hi ' + playerName + ', your final score is ' + finalScore;
     restartStats();
     modalGameOver.classList.toggle('show_modal');
@@ -189,4 +203,41 @@ var restartStats = function() {
     //Restarts the html to its original text
     levelContent.innerHTML = 'Level';
     scoreContent.innerHTML = 'Score';
+    centsContent.innerHTML = ": 00";
+    secondsContent.innerHTML = ": 00";
+    minutesContent.innerHTML = " 00";
+    //Restart chronometer
+    cents = 0;
+    seconds = 0;
+    minutes = 0;
+}
+
+var setChronometer = function() {
+    if (cents < 99) {
+		cents++;
+		if (cents < 10) { cents = "0" + cents }
+		centsContent.innerHTML = ": " + cents;
+	}
+	if (cents == 99) {
+		cents = -1;
+	}
+	if (cents == 0) {
+		seconds ++;
+		if (seconds < 10) { seconds = "0" + seconds }
+		secondsContent.innerHTML = ": " + seconds;
+	}
+	if (seconds == 59) {
+		seconds = -1;
+	}
+	if ( (cents == 0) && (seconds == 0) ) {
+		minutes++;
+		if (minutes < 10) { minutes = "0" + minutes }
+		minutesContent.innerHTML = minutes;
+	}
+}
+
+var calculatePenalty = function() {
+    var secondsPenalty = seconds * 1;
+    var minutesPenalty = minutes * 60;
+    penalty = secondsPenalty + minutesPenalty;
 }
