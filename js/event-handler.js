@@ -15,24 +15,22 @@ var controlChronometer = null;
 var penalty = 0;
 var players = [];
 var playersJSON;
+var orderBy = 'score';
 
 var handlePlayBtn = function() {
-    modalNewGame.classList.toggle('show_modal');
-}
-
-var handleResetBtn = function() {
-    sequence = [];
+    modalNewGame.classList.add('show_modal');
 }
 
 var handleCloseModal = function() {
-    modalNewGame.classList.toggle('show_modal');
+    modalNewGame.classList.remove('show_modal');
+    modalScoreboard.classList.remove('show_modal');
     playerNameInput.value = '';
 }
 
 var handleAcceptPlayerName = function() {
     playerName = playerNameInput.value;
     playerNameInput.value = '';
-    modalNewGame.classList.toggle('show_modal');
+    modalNewGame.classList.remove('show_modal');
     newGame();
 }
 
@@ -197,23 +195,23 @@ var changeName = function() {
 var setChronometer = function() {
     if (cents < 99) {
 		cents++;
-		if (cents < 10) { cents = "0" + cents }
-		centsContent.innerHTML = ": " + cents;
+		if (cents < 10) { cents = '0' + cents }
+		centsContent.innerHTML = ': ' + cents;
 	}
 	if (cents == 99) {
 		cents = -1;
 	}
 	if (cents == 0) {
 		seconds ++;
-		if (seconds < 10) { seconds = "0" + seconds }
-		secondsContent.innerHTML = ": " + seconds;
+		if (seconds < 10) { seconds = '0' + seconds }
+		secondsContent.innerHTML = ': ' + seconds;
 	}
 	if (seconds == 59) {
         seconds = -1;
 	}
 	if ( (cents == 0) && (seconds == 0) ) {
 		minutes++;
-		if (minutes < 10) { minutes = "0" + minutes }
+		if (minutes < 10) { minutes = '0' + minutes }
 		minutesContent.innerHTML = minutes;
 	}
 }
@@ -251,13 +249,77 @@ var savePlayer = function(playerName, finalScore, level) {
     localStorage.setItem('playersData', playersJSON);
 }
 
-var getPlayers = function() {
+var getPlayers = function(orderBy) {
     playersJSON = localStorage.getItem('playersData');
     players = JSON.parse(playersJSON);
-    players.sort(function(a, b) {
-        return b.score - a.score
-    });
-    console.log(players);
+    if(orderBy == 'score'){
+        players.sort(function(a, b) {
+            return b.score - a.score
+        })
+    }
+    else if(orderBy == 'date'){
+        players.sort(function(a, b) {
+            var dateA = parseDateTime(a.date + ' ' + a.hour);
+            var dateB = parseDateTime(b.date + ' ' + b.hour);
+            
+            if (dateA > dateB){
+                return -1;
+            }
+            else if(dateA < dateB){
+                return 1;
+            }
+            else {
+                return parseDateTime(a.hour) - parseDateTime(b.hour);
+            }
+        })
+    }
+}
+
+var handleScoreboardBtn = function(orderBy) {
+    playersTable.innerHTML = '';
+    modalScoreboard.classList.add('show_modal');
+    getPlayers(orderBy);
+
+    players.forEach(function(player) {
+        var row = document.createElement('tr');
+        var nameCell = document.createElement('td');
+        var scoreCell = document.createElement('td');
+        var levelCell = document.createElement('td');
+        var dateCell = document.createElement('td');
+        var hourCell = document.createElement('td');
+
+        nameCell.textContent = player.name;
+        scoreCell.textContent = player.score;
+        levelCell.textContent = player.level;
+        dateCell.textContent = player.date;
+        hourCell.textContent = player.hour;
+
+        row.appendChild(nameCell);
+        row.appendChild(scoreCell);
+        row.appendChild(levelCell);
+        row.appendChild(dateCell);
+        row.appendChild(hourCell);
+        
+        playersTable.appendChild(row);
+    })
+}
+
+var orderByDate = function() {
+    orderBy = 'date';
+    handleScoreboardBtn(orderBy);
+}
+
+var orderByScore = function() {
+    orderBy = 'score';
+    handleScoreboardBtn(orderBy);
+}
+
+var parseDateTime = function(dateTimeString) {
+    var [date, time] = (dateTimeString || '').split(' ');
+    var [day, month, year] = (date || '').split('/');
+    var [hour, minute] = (time || '').split(':');
+    hour = hour.padStart(2, '0');
+    return new Date(year, month -1, day, hour, minute);
 }
 
 var restartStats = function() {
@@ -274,9 +336,9 @@ var restartStats = function() {
     //Restarts the html to its original text
     levelContent.innerHTML = 'Level';
     scoreContent.innerHTML = 'Score';
-    centsContent.innerHTML = ": 00";
-    secondsContent.innerHTML = ": 00";
-    minutesContent.innerHTML = " 00";
+    centsContent.innerHTML = ': 00';
+    secondsContent.innerHTML = ': 00';
+    minutesContent.innerHTML = ' 00';
     //Restart chronometer
     cents = 0;
     seconds = 0;

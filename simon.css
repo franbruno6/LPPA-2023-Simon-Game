@@ -222,3 +222,34 @@ footer {
     border: 2px solid #767676;
     outline: none;
 }
+
+/*Table players*/
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 16px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+th {
+    font-size: 20px;
+    margin: 0 0 10px;
+    font-weight: 700;
+}
+
+td {
+    font-size: 20px;
+}
+
+tr {
+    padding: 5px 0;
+}
+
+.scoreboard_modal {
+    font-size: 16px;
+    display: inline;
+    padding: 7px;
+    margin: 0;
+}

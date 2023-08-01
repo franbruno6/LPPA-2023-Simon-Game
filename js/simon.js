@@ -27,11 +27,19 @@ var levelContent;
 
 //Score
 var scoreContent;
+var scoreboardScore;
+var scoreboardDate;
+var scoreboardClose;
+
 
 //Chronometer
 var centsContent;
 var secondsContent;
 var minutesContent;
+
+//ScoreBoard
+var playersTable;
+var modalScoreboard;
 
 var init = function () {
     //Controls
@@ -61,11 +69,18 @@ var init = function () {
 
     //Score
     scoreContent = document.querySelector('#score');
+    scoreboardClose = document.querySelector('#scoreboard-close');
+    scoreboardScore = document.querySelector('#scoreboard-score');
+    scoreboardDate = document.querySelector('#scoreboard-date');
 
     //Timer
     centsContent = document.querySelector('#cents');
     secondsContent = document.querySelector('#seconds');
     minutesContent = document.querySelector('#minutes');
+
+    //Scoreboard
+    modalScoreboard = document.querySelector('#modal-scoreboard');
+    playersTable = document.querySelector('#players-table-body');
 
     //Initialize buttons disable
     playerNameAccept.disabled = true;
@@ -78,7 +93,7 @@ var init = function () {
 
     //Controls
     playBtn.addEventListener('click', handlePlayBtn);
-    scoreboardBtn.addEventListener('click', handleResetBtn);
+    scoreboardBtn.addEventListener('click', handleScoreboardBtn);
 
     //Simon buttons
     greenBtn.addEventListener('click', clickOnGreenBtn);
@@ -94,4 +109,9 @@ var init = function () {
     //Modal game over
     gameOverRestart.addEventListener('click', restartGame);
     gameOverChangeName.addEventListener('click', changeName);
+
+    //Modal scoreboard
+    scoreboardDate.addEventListener('click', orderByDate);
+    scoreboardScore.addEventListener('click', orderByScore);
+    scoreboardClose.addEventListener('click', handleCloseModal);
 }

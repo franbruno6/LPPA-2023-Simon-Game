@@ -38,7 +38,7 @@
     <section id="modal-new-game" class="modal">
         <div class="modal_container">
             <h2 class="modal_title">Enter your name!</h2>
-            <form action="player-name" id="form-new-game">
+            <form action="/" id="form-new-game">
                 <input type="text" name="player-name" id="player-name">
                 <p id="error-player-name" class="modal_error">You must enter at least 3 letters to play</p>
             </form>
@@ -52,6 +52,27 @@
             <p id="game-over-content" class="modal_paragraph"></p>
             <button id="game-over-restart" class="modal_button">Restart Game</button>
             <button id="game-over-change-name" class="modal_button">Change Name</button>
+        </div>
+    </section>
+    <section id="modal-scoreboard" class="modal">
+        <div class="modal_container">
+            <h2 class="modal_title">Scoreboard</h2>
+            <div>
+                <p class="scoreboard_modal">Order By:</p>
+                <button id="scoreboard-score" class="modal_button scoreboard_modal">Score</button>
+                <button id="scoreboard-date" class="modal_button scoreboard_modal">Date</button>
+            </div>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Level</th>
+                    <th>Date</th>
+                    <th>Hour</th>
+                </thead>
+                <tbody id="players-table-body"></tbody>
+            </table>
+            <button id="scoreboard-close" class="modal_button scoreboard_modal">Close</button>
         </div>
     </section>
     <footer>
