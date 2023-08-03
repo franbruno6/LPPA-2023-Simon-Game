@@ -1,350 +1,119 @@
 'use strict';
 
-var sequence = [];
-var colors = ['green', 'red', 'yellow', 'blue'];
-var sequencePlayer = [];
-var playerName = '';
-var level = 0;
-var indexValidate = 0;
-var score = 0;
-var finalScore = 0;
-var cents = 0;
-var seconds = 0;
-var minutes = 0;
-var controlChronometer = null;
-var penalty = 0;
-var players = [];
-var playersJSON;
-var orderBy = 'score';
+//Controls
+var playBtn;
+var scoreboardBtn;
 
-var handlePlayBtn = function() {
-    modalNewGame.classList.add('show_modal');
-}
+//Simon buttons
+var greenBtn;
+var redBtn;
+var yellowBtn;
+var blueBtn;
 
-var handleCloseModal = function() {
-    modalNewGame.classList.remove('show_modal');
-    modalGameOver.classList.remove('show_modal');
-    modalScoreboard.classList.remove('show_modal');
-    playerNameInput.value = '';
-    playBtn.disabled = false;
-    scoreboardBtn.disabled = false;
-}
+//Modal new game
+var modalNewGame;
+var playerNameInput;
+var playerNameAccept;
+var playerNameCancel;
 
-var handleAcceptPlayerName = function() {
-    playerName = playerNameInput.value;
-    playerNameInput.value = '';
-    modalNewGame.classList.remove('show_modal');
-    newGame();
-}
+//Modal Game Over
+var modalGameOver;
+var gameOverRestart;
+var gameOverChangeName;
+var gameOverContent;
+var gameOverClose;
 
-var newGame = function() {
-    playBtn.disabled = true;
-    scoreboardBtn.disabled = true;
-    var colorPos = Math.floor(Math.random() * 4);
-    var newColor = colors[colorPos];
-    sequence.push(newColor);
-    getPlayers();
-    setTimeout(showSequence, 2000);
-}
+//Level
+var levelContent;
 
-var showSequence = function() {
-    newLevel();
-    sequence.forEach(function(color,i){
-        setTimeout(function(){
-            switch(color) {
-                case 'green':
-                    greenBtn.classList.toggle('highlight');
-                    setTimeout(function(){ 
-                        greenBtn.classList.toggle('highlight');
-                    }, 1000);
-                    break;
-                case 'red':
-                    redBtn.classList.toggle('highlight');
-                    setTimeout(function(){ 
-                        redBtn.classList.toggle('highlight');
-                    }, 1000);
-                    break;
-                case 'yellow':
-                    yellowBtn.classList.toggle('highlight');
-                    setTimeout(function(){ 
-                        yellowBtn.classList.toggle('highlight');
-                    }, 1000);
-                    break;
-                case 'blue':
-                    blueBtn.classList.toggle('highlight');
-                    setTimeout(function(){ 
-                        blueBtn.classList.toggle('highlight');
-                    }, 1000);
-                    break;
-            }
-        }, i*2000)
-    })
-    setTimeout(playerTurn,sequence.length*1750); //Wait for the sequence to finish lighting up to enable the buttons
-}
+//Score
+var scoreContent;
+var scoreboardScore;
+var scoreboardDate;
+var scoreboardClose;
 
-var playerTurn = function() {
-    if(sequence.length > sequencePlayer.length){
-        playerPlay();
-    }
-    else{
-        simonPlay();
-        setTimeout(function(){
-            score = score + (level*10);
-            scoreContent.innerHTML = 'Score ' + score;
-        },300)
-        newGame();
-    }
-}
+//Chronometer
+var centsContent;
+var secondsContent;
+var minutesContent;
 
-var newLevel = function() {
-    level++;
-    levelContent.innerHTML = 'Level ' + level;
-    indexValidate = 0;
-    sequencePlayer = [];
-}
+//ScoreBoard
+var playersTable;
+var modalScoreboard;
 
-var clickOnGreenBtn = function() {
-    greenBtn.classList.add('highlight');
-    setTimeout(function(){
-        greenBtn.classList.remove('highlight')
-    },100);
-    sequencePlayer.push('green');
-    validateColor();
-}
+var init = function () {
+    //Controls
+    playBtn = document.querySelector('#play-btn');
+    scoreboardBtn = document.querySelector('#scoreboard-btn');
 
-var clickOnRedBtn = function() {
-    redBtn.classList.add('highlight');
-    setTimeout(function(){
-        redBtn.classList.remove('highlight')
-    },100);
-    sequencePlayer.push('red');
-    validateColor();
-}
+    //Simon buttons
+    greenBtn = document.querySelector('#green-btn');
+    redBtn = document.querySelector('#red-btn');
+    yellowBtn = document.querySelector('#yellow-btn');
+    blueBtn = document.querySelector('#blue-btn');
 
-var clickOnBlueBtn = function() {
-    blueBtn.classList.add('highlight');
-    setTimeout(function(){
-        blueBtn.classList.remove('highlight')
-    },100);
-    sequencePlayer.push('blue');
-    validateColor();
-}
+    //Modal new game
+    modalNewGame = document.querySelector('#modal-new-game');
+    playerNameInput = document.querySelector('#player-name');
+    playerNameAccept = document.querySelector('#player-name-accept');
+    playerNameCancel = document.querySelector('#player-name-cancel');
 
-var clickOnYellowBtn = function() {
-    yellowBtn.classList.add('highlight');
-    setTimeout(function(){
-        yellowBtn.classList.remove('highlight')
-    },100);
-    sequencePlayer.push('yellow');
-    validateColor();
-}
+    //Modal game over
+    modalGameOver = document.querySelector('#modal-game-over');
+    gameOverRestart = document.querySelector('#game-over-restart');
+    gameOverContent = document.querySelector('#game-over-content');
+    gameOverChangeName = document.querySelector('#game-over-change-name');
+    gameOverClose = document.querySelector('#game-over-close');
 
-var validateColor = function() {
-    if(sequence[indexValidate] == sequencePlayer[indexValidate]){
-        indexValidate++;
-        score = score + 10;
-        scoreContent.innerHTML = 'Score ' + score;
-        playerTurn();
-    }
-    else{
-        gameOver();
-    }
-}
+    //Level
+    levelContent = document.querySelector('#level');
 
-var simonPlay = function() {
+    //Score
+    scoreContent = document.querySelector('#score');
+    scoreboardClose = document.querySelector('#scoreboard-close');
+    scoreboardScore = document.querySelector('#scoreboard-score');
+    scoreboardDate = document.querySelector('#scoreboard-date');
+
+    //Timer
+    centsContent = document.querySelector('#cents');
+    secondsContent = document.querySelector('#seconds');
+    minutesContent = document.querySelector('#minutes');
+
+    //Scoreboard
+    modalScoreboard = document.querySelector('#modal-scoreboard');
+    playersTable = document.querySelector('#players-table-body');
+
+    //Initialize buttons disable
+    playerNameAccept.disabled = true;
     greenBtn.disabled = true;
     redBtn.disabled = true;
     yellowBtn.disabled = true;
     blueBtn.disabled = true;
-    clearInterval(controlChronometer);
-    controlChronometer = null;
-}
 
-var playerPlay = function() {
-    greenBtn.disabled = false;
-    redBtn.disabled = false;
-    yellowBtn.disabled = false;
-    blueBtn.disabled = false;
-    if (controlChronometer == null){
-        controlChronometer = setInterval(setChronometer,10);
-    }
-}
+    //Event Listener
 
-var gameOver = function() {
-    simonPlay();
-    calculatePenalty();
-    finalScore = score - penalty;
-    if (finalScore < 0){
-        finalScore = 0;
-    }
-    savePlayer(playerName,finalScore,level);
-    gameOverContent.innerHTML = 'Hi ' + playerName + ', your final score is ' + finalScore;
-    restartStats();
-    modalGameOver.classList.add('show_modal');
-}
+    //Controls
+    playBtn.addEventListener('click', handlePlayBtn);
+    scoreboardBtn.addEventListener('click', orderByScore);
 
-var restartGame = function() {
-    modalGameOver.classList.remove('show_modal');
-    newGame();
-}
+    //Simon buttons
+    greenBtn.addEventListener('click', clickOnGreenBtn);
+    redBtn.addEventListener('click', clickOnRedBtn);
+    yellowBtn.addEventListener('click', clickOnYellowBtn);
+    blueBtn.addEventListener('click', clickOnBlueBtn);
 
-var changeName = function() {
-    modalGameOver.classList.remove('show_modal');
-    handlePlayBtn();
-}
+    //Modal new game
+    playerNameCancel.addEventListener('click', handleCloseModal);
+    playerNameInput.addEventListener('keyup', validateFormPlayerName);
+    playerNameAccept.addEventListener('click', handleAcceptPlayerName);
 
-var setChronometer = function() {
-    if (cents < 99) {
-		cents++;
-		if (cents < 10) { cents = '0' + cents }
-		centsContent.innerHTML = ': ' + cents;
-	}
-	if (cents == 99) {
-		cents = -1;
-	}
-	if (cents == 0) {
-		seconds ++;
-		if (seconds < 10) { seconds = '0' + seconds }
-		secondsContent.innerHTML = ': ' + seconds;
-	}
-	if (seconds == 59) {
-        seconds = -1;
-	}
-	if ( (cents == 0) && (seconds == 0) ) {
-		minutes++;
-		if (minutes < 10) { minutes = '0' + minutes }
-		minutesContent.innerHTML = minutes;
-	}
-}
+    //Modal game over
+    gameOverRestart.addEventListener('click', restartGame);
+    gameOverChangeName.addEventListener('click', changeName);
+    gameOverClose.addEventListener('click', handleCloseModal);
 
-var calculatePenalty = function() {
-    var secondsPenalty = seconds * 1;
-    var minutesPenalty = minutes * 60;
-    penalty = secondsPenalty + minutesPenalty;
-}
-
-var savePlayer = function(playerName, finalScore, level) {
-    var currentDate = new Date();
-    var hours = currentDate.getHours();
-    var minutes = currentDate.getMinutes();
-    var day = currentDate.toLocaleDateString();
-
-    if (hours < 10){
-        hours = '0'+hours;
-    }
-    if (minutes < 10){
-        minutes = '0'+minutes;
-    }
-
-    var newPlayer = {
-        name: playerName,
-        score: finalScore,
-        level : level,
-        date: day,
-        hour : hours + ':' + minutes
-    };
-
-    players.push(newPlayer);
-    
-    playersJSON = JSON.stringify(players);
-    localStorage.setItem('playersData', playersJSON);
-}
-
-var getPlayers = function(orderBy) {
-    if (localStorage.getItem('playersData') !== null){
-        playersJSON = localStorage.getItem('playersData');
-        players = JSON.parse(playersJSON);
-        console.log('papitas');
-    }
-    if(orderBy == 'score'){
-        players.sort(function(a, b) {
-            return b.score - a.score
-        })
-    }
-    else if(orderBy == 'date'){
-        players.sort(function(a, b) {
-            var dateA = parseDateTime(a.date + ' ' + a.hour);
-            var dateB = parseDateTime(b.date + ' ' + b.hour);
-            
-            if (dateA > dateB){
-                return -1;
-            }
-            else if(dateA < dateB){
-                return 1;
-            }
-            else {
-                return parseDateTime(a.hour) - parseDateTime(b.hour);
-            }
-        })
-    }
-}
-
-var handleScoreboardBtn = function(orderBy) {
-    playersTable.innerHTML = '';
-    modalScoreboard.classList.add('show_modal');
-    getPlayers(orderBy);
-
-    players.forEach(function(player) {
-        var row = document.createElement('tr');
-        var nameCell = document.createElement('td');
-        var scoreCell = document.createElement('td');
-        var levelCell = document.createElement('td');
-        var dateCell = document.createElement('td');
-        var hourCell = document.createElement('td');
-
-        nameCell.textContent = player.name;
-        scoreCell.textContent = player.score;
-        levelCell.textContent = player.level;
-        dateCell.textContent = player.date;
-        hourCell.textContent = player.hour;
-
-        row.appendChild(nameCell);
-        row.appendChild(scoreCell);
-        row.appendChild(levelCell);
-        row.appendChild(dateCell);
-        row.appendChild(hourCell);
-        
-        playersTable.appendChild(row);
-    })
-}
-
-var orderByDate = function() {
-    orderBy = 'date';
-    handleScoreboardBtn(orderBy);
-}
-
-var orderByScore = function() {
-    orderBy = 'score';
-    handleScoreboardBtn(orderBy);
-}
-
-var parseDateTime = function(dateTimeString) {
-    var [date, time] = (dateTimeString || '').split(' ');
-    var [day, month, year] = (date || '').split('/');
-    var [hour, minute] = (time || '').split(':');
-    hour = hour.padStart(2, '0');
-    return new Date(year, month -1, day, hour, minute);
-}
-
-var restartStats = function() {
-    //Reset sequence, level and score
-    sequence = [];
-    sequencePlayer = [];
-    level = 0;
-    score = 0;
-    //Eliminates the highlight class from the buttons in case anyone stils higlighted
-    greenBtn.classList.remove('highlight');
-    redBtn.classList.remove('highlight');
-    blueBtn.classList.remove('highlight');
-    yellowBtn.classList.remove('highlight');
-    //Restarts the html to its original text
-    levelContent.innerHTML = 'Level';
-    scoreContent.innerHTML = 'Score';
-    centsContent.innerHTML = ': 00';
-    secondsContent.innerHTML = ': 00';
-    minutesContent.innerHTML = ' 00';
-    //Restart chronometer
-    cents = 0;
-    seconds = 0;
-    minutes = 0;
+    //Modal scoreboard
+    scoreboardDate.addEventListener('click', orderByDate);
+    scoreboardScore.addEventListener('click', orderByScore);
+    scoreboardClose.addEventListener('click', handleCloseModal);
 }
