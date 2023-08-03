@@ -55,23 +55,26 @@ a {
 .simon_btn {
     display: block;
     width: 10vw;
-    min-width: 140px;
     height: 10vw;
+    min-width: 140px;
     min-height: 140px;
-    margin: 1vw;
     border-radius: 2vw;
     border: 2px solid #000000;  
+    margin: 1vw;
 }
 
 #green-btn {
     background-color: #33cc33;
 }
+
 #red-btn {
     background-color: #ff0000;
 }
+
 #yellow-btn {
     background-color: #ffff00;
 }
+
 #blue-btn {
     background-color: #0066ff;
 }
@@ -79,12 +82,15 @@ a {
 #green-btn.highlight {
     background-color: #adebad;
 }
+
 #red-btn.highlight {
     background-color: #ff9999;
 }
+
 #yellow-btn.highlight {
     background-color: #ffff99;
 }
+
 #blue-btn.highlight {
     background-color: #99c2ff;
 }
