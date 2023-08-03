@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Game</title>
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./simon.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/simon.css">
 </head>
 <body>
     <header>
@@ -13,9 +13,9 @@
     </header>
     <main>
         <div class="level">
-            <p id="level">Level</p>
+            <h2 id="level">Level</h2>
             <div id="timer">
-                <p id="timer" class="timer">Timer</p>
+                <h2 id="timer" class="timer">Timer</h2>
                 <p id="minutes" class="timer"> 00</p>
                 <p id="seconds" class="timer">: 00</p>
                 <p id="cents" class="timer">: 00</p>
@@ -32,12 +32,12 @@
             <button id="scoreboard-btn" class="control">Scoreboard</button>
         </div>
         <div class="score">
-            <p id="score">Score</p>
+            <h2 id="score">Score</h2>
         </div>
     </main>
     <section id="modal-new-game" class="modal">
         <div class="modal_container">
-            <h2 class="modal_title">Enter your name!</h2>
+            <h3 class="modal_title">Enter your name!</h3>
             <form action="/" id="form-new-game">
                 <input type="text" name="player-name" id="player-name">
                 <p id="error-player-name" class="modal_error">You must enter at least 3 letters to play</p>
@@ -48,7 +48,7 @@
     </section>
     <section id="modal-game-over" class="modal">
         <div class="modal_container">
-            <h2 class="modal_title">Game Over</h2>
+            <h3 class="modal_title">Game Over</h3>
             <p id="game-over-content" class="modal_paragraph"></p>
             <button id="game-over-restart" class="modal_btn">Restart Game</button>
             <button id="game-over-change-name" class="modal_btn">Change Name</button>
@@ -57,7 +57,7 @@
     </section>
     <section id="modal-scoreboard" class="modal">
         <div class="modal_container">
-            <h2 class="modal_title">Scoreboard</h2>
+            <h3 class="modal_title">Scoreboard</h3>
             <div>
                 <p class="scoreboard_modal">Order By:</p>
                 <button id="scoreboard-score" class="modal_btn scoreboard_modal">Score</button>
@@ -84,7 +84,7 @@
                 <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
               </svg></a>
         </div>
-        <a href="./contact.html" target="_blank" id="contact">Contact Us</a>
+        <a href="./html/contact.html" target="_blank" id="contact">Contact Us</a>
     </footer>
     <script src="./js/validations.js"></script>
     <script src="./js/event-handler.js"></script>
