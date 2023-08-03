@@ -51,3 +51,23 @@ var parseDateTime = function(dateTimeString) {
     hour = hour.padStart(2, '0');
     return new Date(year, month -1, day, hour, minute);
 }
+
+var insertPlayer = function(player) {
+    var row = document.createElement('tr');
+    var nameCell = document.createElement('td');
+    var scoreCell = document.createElement('td');
+    var levelCell = document.createElement('td');
+    var dateCell = document.createElement('td');
+    var hourCell = document.createElement('td');
+    nameCell.textContent = player.name;
+    scoreCell.textContent = player.score;
+    levelCell.textContent = player.level;
+    dateCell.textContent = player.date;
+    hourCell.textContent = player.hour;
+    row.appendChild(nameCell);
+    row.appendChild(scoreCell);
+    row.appendChild(levelCell);
+    row.appendChild(dateCell);
+    row.appendChild(hourCell);
+    playersTable.appendChild(row);
+}
