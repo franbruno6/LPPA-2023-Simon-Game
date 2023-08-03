@@ -31,23 +31,17 @@ var getPlayers = function(orderBy) {
         players = JSON.parse(playersJSON);
         console.log('papitas');
     }
-    if(orderBy == 'score'){
+    if (orderBy == 'score'){
         players.sort(function(a, b) {
             return b.score - a.score;
         })
     }
-    else if(orderBy == 'date'){
+    if (orderBy == 'date'){
         players.sort(function(a, b) {
         var dateA = parseDateTime(a.date + ' ' + a.hour);
         var dateB = parseDateTime(b.date + ' ' + b.hour);
         if (dateA > dateB){
             return -1;
-        }
-        else if(dateA < dateB){
-            return 1;
-        }
-        else {
-            return parseDateTime(a.hour) - parseDateTime(b.hour);
         }
         })
     }
