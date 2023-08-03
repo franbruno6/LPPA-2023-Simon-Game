@@ -1,0 +1,94 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+}
+
+.modal_container {
+    display: block;
+    text-align: center;
+    background-color: #ffdf80;
+    width: 40vw;
+    border-radius: 6px;
+    margin: auto;
+    padding: 30px;
+}
+
+.modal_title {
+    color: #000000;
+    padding-bottom: 15px;
+    font-size: 30px;
+}
+
+.modal_paragraph {
+    padding: 15px;
+    font-size: 20px;
+}
+
+.modal_error {
+    display: none;
+    color: #ff0000;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.show_error {
+    display: block;
+}
+
+.modal_btn {
+    background-color: #ffdf80;
+    color: #000000;
+    margin: 20px 0 0;
+    font-size: 20px;
+}
+
+.modal_btn:hover {
+    background-color: #000000;
+    color: #ffdf80;
+}
+
+.show_modal {
+    display: flex;
+}
+
+#player-name {
+    background-color: #ffdf80;
+    color: #000000;
+    border: 2px solid #767676;
+    outline: none;
+    font-size: 20px;
+}
+
+table {
+    width: 80%;
+    border-spacing: 0 10px;
+    border-collapse: separate;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+th {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+td {
+    font-size: 20px;
+}
+
+tr {
+    padding: 5px 0;
+}
+
+.scoreboard_modal {
+    display: inline;
+    margin: 0;
+    padding: 7px;
+    font-size: 16px;
+}
