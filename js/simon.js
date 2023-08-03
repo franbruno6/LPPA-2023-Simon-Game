@@ -94,7 +94,7 @@ var init = function () {
 
     //Controls
     playBtn.addEventListener('click', handlePlayBtn);
-    scoreboardBtn.addEventListener('click', handleScoreboardBtn);
+    scoreboardBtn.addEventListener('click', orderByScore);
 
     //Simon buttons
     greenBtn.addEventListener('click', clickOnGreenBtn);

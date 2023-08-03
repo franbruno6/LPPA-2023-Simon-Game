@@ -101,9 +101,6 @@ var newLevel = function() {
     levelContent.innerHTML = 'Level ' + level;
     indexValidate = 0;
     sequencePlayer = [];
-    if (level > 1){
-        clearInterval(controlChronometer);
-    }
 }
 
 var clickOnGreenBtn = function() {
@@ -183,16 +180,16 @@ var gameOver = function() {
     savePlayer(playerName,finalScore,level);
     gameOverContent.innerHTML = 'Hi ' + playerName + ', your final score is ' + finalScore;
     restartStats();
-    modalGameOver.classList.toggle('show_modal');
+    modalGameOver.classList.add('show_modal');
 }
 
 var restartGame = function() {
-    modalGameOver.classList.toggle('show_modal');
+    modalGameOver.classList.remove('show_modal');
     newGame();
 }
 
 var changeName = function() {
-    modalGameOver.classList.toggle('show_modal');
+    modalGameOver.classList.remove('show_modal');
     handlePlayBtn();
 }
 
