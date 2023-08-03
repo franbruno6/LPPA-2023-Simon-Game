@@ -67,7 +67,7 @@ a {
     margin-top: 15px;
 }
 
-.simonBtn {
+.simon_btn {
     display: block;
     width: 10vw;
     min-width: 140px;
@@ -78,29 +78,29 @@ a {
     border: 2px solid #000000;  
 }
 
-#greenBtn {
+#green-btn {
     background-color: #33cc33;
 }
-#redBtn {
+#red-btn {
     background-color: #ff0000;
 }
-#yellowBtn {
+#yellow-btn {
     background-color: #ffff00;
 }
-#blueBtn {
+#blue-btn {
     background-color: #0066ff;
 }
 
-#greenBtn.highlight {
+#green-btn.highlight {
     background-color: #adebad;
 }
-#redBtn.highlight {
+#red-btn.highlight {
     background-color: #ff9999;
 }
-#yellowBtn.highlight {
+#yellow-btn.highlight {
     background-color: #ffff99;
 }
-#blueBtn.highlight {
+#blue-btn.highlight {
     background-color: #99c2ff;
 }
 
@@ -199,14 +199,14 @@ footer {
     display: block;
 }
 
-.modal_button {
+.modal_btn {
     font-size: 20px;
     background-color: #ffdf80;
     color: #000000;
     margin: 20px 0 0;
 }
 
-.modal_button:hover {
+.modal_btn:hover {
     background-color: #000000;
     color: #ffdf80;
 }

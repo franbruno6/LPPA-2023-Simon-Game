@@ -43,14 +43,14 @@ var modalScoreboard;
 
 var init = function () {
     //Controls
-    playBtn = document.getElementById('playBtn');
-    scoreboardBtn = document.getElementById('scoreboardBtn');
+    playBtn = document.querySelector('#play-btn');
+    scoreboardBtn = document.querySelector('#scoreboard-btn');
 
     //Simon buttons
-    greenBtn = document.getElementById('greenBtn');
-    redBtn = document.getElementById('redBtn');
-    yellowBtn = document.getElementById('yellowBtn');
-    blueBtn = document.getElementById('blueBtn');
+    greenBtn = document.querySelector('#green-btn');
+    redBtn = document.querySelector('#red-btn');
+    yellowBtn = document.querySelector('#yellow-btn');
+    blueBtn = document.querySelector('#blue-btn');
 
     //Modal new game
     modalNewGame = document.querySelector('#modal-new-game');

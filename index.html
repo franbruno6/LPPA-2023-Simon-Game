@@ -22,14 +22,14 @@
             </div>
         </div>
         <div class="simon">
-            <button id="greenBtn" class="simonBtn"></button>
-            <button id="redBtn" class="simonBtn"></button>
-            <button id="yellowBtn" class="simonBtn"></button>
-            <button id="blueBtn" class="simonBtn"></button>
+            <button id="green-btn" class="simon_btn"></button>
+            <button id="red-btn" class="simon_btn"></button>
+            <button id="yellow-btn" class="simon_btn"></button>
+            <button id="blue-btn" class="simon_btn"></button>
         </div>
         <div class="controls">
-            <button id="playBtn" class="control">New Game</button>
-            <button id="scoreboardBtn" class="control">Scoreboard</button>
+            <button id="play-btn" class="control">New Game</button>
+            <button id="scoreboard-btn" class="control">Scoreboard</button>
         </div>
         <div class="score">
             <p id="score">Score</p>
@@ -42,17 +42,17 @@
                 <input type="text" name="player-name" id="player-name">
                 <p id="error-player-name" class="modal_error">You must enter at least 3 letters to play</p>
             </form>
-            <button id="player-name-accept" class="modal_button">Accept</button>
-            <button id="player-name-cancel" class="modal_button">Cancel</button>
+            <button id="player-name-accept" class="modal_btn">Accept</button>
+            <button id="player-name-cancel" class="modal_btn">Cancel</button>
         </div>
     </section>
     <section id="modal-game-over" class="modal">
         <div class="modal_container">
             <h2 class="modal_title">Game Over</h2>
             <p id="game-over-content" class="modal_paragraph"></p>
-            <button id="game-over-restart" class="modal_button">Restart Game</button>
-            <button id="game-over-change-name" class="modal_button">Change Name</button>
-            <button id="game-over-close" class="modal_button">Close</button>
+            <button id="game-over-restart" class="modal_btn">Restart Game</button>
+            <button id="game-over-change-name" class="modal_btn">Change Name</button>
+            <button id="game-over-close" class="modal_btn">Close</button>
         </div>
     </section>
     <section id="modal-scoreboard" class="modal">
@@ -60,8 +60,8 @@
             <h2 class="modal_title">Scoreboard</h2>
             <div>
                 <p class="scoreboard_modal">Order By:</p>
-                <button id="scoreboard-score" class="modal_button scoreboard_modal">Score</button>
-                <button id="scoreboard-date" class="modal_button scoreboard_modal">Date</button>
+                <button id="scoreboard-score" class="modal_btn scoreboard_modal">Score</button>
+                <button id="scoreboard-date" class="modal_btn scoreboard_modal">Date</button>
             </div>
             <table>
                 <thead>
@@ -73,7 +73,7 @@
                 </thead>
                 <tbody id="players-table-body"></tbody>
             </table>
-            <button id="scoreboard-close" class="modal_button scoreboard_modal">Close</button>
+            <button id="scoreboard-close" class="modal_btn scoreboard_modal">Close</button>
         </div>
     </section>
     <footer>
