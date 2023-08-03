@@ -1,8 +1,3 @@
-/*Reglas en html
-los espacios de las clases van con _ (ion bajo)
-los espacios de los id van con - (ion medio)
-*/
-
 body {
     display: flex;
     flex-direction: column;
@@ -14,29 +9,27 @@ body {
 }
 
 h1 {
-    margin: 20px 0;
     text-align: center;
     color: #ffdf80;
+    margin: 20px 0;
     font-size: 30px;
 }
 
 button {
-    margin: 20px;
-    padding: 15px;
     background-color: #000000;
-    font-size: 15px;
     color: #ffdf80;
     border: none;
     border-radius: 5px;
+    margin: 20px;
+    padding: 15px;
     cursor: pointer;
+    font-size: 15px;
 }
 
 a {
-    text-decoration: none;
     color: #ffdf80;
+    text-decoration: none;
 }
-
-/*Simon*/
 
 .simon {
     display: flex;
@@ -95,8 +88,6 @@ a {
     background-color: #99c2ff;
 }
 
-/*Buttons new game and scoreboard*/
-
 .controls {
     display: flex;
     justify-content: space-around;
@@ -105,132 +96,4 @@ a {
 .controls button:hover {
     background-color: #ffdf80;
     color: #000000;
-}
-
-/*Footer*/
-
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    font-size: 20px;
-    padding: 0 0 13px 13px;
-    color: #ffdf80;
-    flex-wrap: wrap;
-}
-
-#developer {
-    display: inline;
-    left: 0;
-}
-
-#developer-github {
-    display: flex;
-    gap: 20px;
-}
-
-#contact {
-    text-align: end;
-}
-
-/*Modals*/
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #111111bd;
-    display: none;
-}
-
-.modal_container {
-    margin: auto;
-    width: 40vw;
-    background-color: #ffdf80;
-    border-radius: 6px;
-    padding: 30px;
-    display: block;
-    text-align: center;
-}
-
-.modal_title {
-    font-size: 30px;
-    padding-bottom: 15px;
-    color: #000000;
-}
-
-.modal_paragraph {
-    font-size: 20px;
-    padding: 15px;
-}
-
-.modal_error {
-    font-size: 20px;
-    padding: 15px;
-    color: #ff0000;
-    display: none;
-}
-
-.show_error {
-    display: block;
-}
-
-.modal_btn {
-    font-size: 20px;
-    background-color: #ffdf80;
-    color: #000000;
-    margin: 20px 0 0;
-}
-
-.modal_btn:hover {
-    background-color: #000000;
-    color: #ffdf80;
-}
-
-.show_modal {
-    display: flex;
-}
-
-#player-name {
-    font-size: 20px;
-    background-color: #ffdf80;
-    color: #000000;
-    border: 2px solid #767676;
-    outline: none;
-}
-
-/*Table players*/
-
-table {
-    width: 80%;
-    margin: 0 auto;
-    font-size: 16px;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-}
-
-th {
-    font-size: 20px;
-    margin: 0 0 10px;
-    font-weight: 700;
-}
-
-td {
-    font-size: 20px;
-}
-
-tr {
-    padding: 5px 0;
-}
-
-.scoreboard_modal {
-    font-size: 16px;
-    display: inline;
-    padding: 7px;
-    margin: 0;
 }
