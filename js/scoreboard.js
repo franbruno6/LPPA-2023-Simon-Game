@@ -5,14 +5,12 @@ var savePlayer = function(playerName, finalScore, level) {
     var hours = currentDate.getHours();
     var minutes = currentDate.getMinutes();
     var day = currentDate.toLocaleDateString();
-
     if (hours < 10){
         hours = '0' + hours;
     }
     if (minutes < 10){
         minutes = '0' + minutes;
     }
-
     var newPlayer = {
         name: playerName,
         score: finalScore,
@@ -29,7 +27,6 @@ var getPlayers = function(orderBy) {
     if (localStorage.getItem('playersData') != null){
         playersJSON = localStorage.getItem('playersData');
         players = JSON.parse(playersJSON);
-        console.log('papitas');
     }
     if (orderBy == 'score'){
         players.sort(function(a, b) {

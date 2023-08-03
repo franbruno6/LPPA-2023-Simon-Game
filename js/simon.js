@@ -87,26 +87,27 @@ var handleScoreboardBtn = function(orderBy) {
     playersTable.innerHTML = '';
     modalScoreboard.classList.add('show_modal');
     getPlayers(orderBy);
+    players.forEach(insertPlayer);
+}
 
-    players.forEach(function(player) {
-        var row = document.createElement('tr');
-        var nameCell = document.createElement('td');
-        var scoreCell = document.createElement('td');
-        var levelCell = document.createElement('td');
-        var dateCell = document.createElement('td');
-        var hourCell = document.createElement('td');
-        nameCell.textContent = player.name;
-        scoreCell.textContent = player.score;
-        levelCell.textContent = player.level;
-        dateCell.textContent = player.date;
-        hourCell.textContent = player.hour;
-        row.appendChild(nameCell);
-        row.appendChild(scoreCell);
-        row.appendChild(levelCell);
-        row.appendChild(dateCell);
-        row.appendChild(hourCell);
-        playersTable.appendChild(row);
-    })
+var insertPlayer = function(player) {
+    var row = document.createElement('tr');
+    var nameCell = document.createElement('td');
+    var scoreCell = document.createElement('td');
+    var levelCell = document.createElement('td');
+    var dateCell = document.createElement('td');
+    var hourCell = document.createElement('td');
+    nameCell.textContent = player.name;
+    scoreCell.textContent = player.score;
+    levelCell.textContent = player.level;
+    dateCell.textContent = player.date;
+    hourCell.textContent = player.hour;
+    row.appendChild(nameCell);
+    row.appendChild(scoreCell);
+    row.appendChild(levelCell);
+    row.appendChild(dateCell);
+    row.appendChild(hourCell);
+    playersTable.appendChild(row);
 }
 
 var orderByDate = function() {
