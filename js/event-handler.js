@@ -251,8 +251,11 @@ var savePlayer = function(playerName, finalScore, level) {
 }
 
 var getPlayers = function(orderBy) {
-    playersJSON = localStorage.getItem('playersData');
-    players = JSON.parse(playersJSON);
+    if (localStorage.getItem('playersData') !== null){
+        playersJSON = localStorage.getItem('playersData');
+        players = JSON.parse(playersJSON);
+        console.log('papitas');
+    }
     if(orderBy == 'score'){
         players.sort(function(a, b) {
             return b.score - a.score
